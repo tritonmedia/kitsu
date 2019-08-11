@@ -1,4 +1,4 @@
-module github.com/animenotifier/kitsu
+module github.com/tritonmedia/kitsu
 
 go 1.12
 
