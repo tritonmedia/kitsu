@@ -1,5 +1,7 @@
 package kitsu
 
+import "time"
+
 // Auto-generated JSON definition from:
 // https://mholt.github.io/json-to-go/
 
@@ -151,6 +153,65 @@ type Anime struct {
 	// 		} `json:"links"`
 	// 	} `json:"animeStaff"`
 	// } `json:"relationships"`
+}
+
+// EpisodeListResponse is the response to trying to get episodes
+type EpisodeListResponse struct {
+	Data []Episode `json:"data"`
+	Meta struct {
+		Count int `json:"count"`
+	} `json:"meta"`
+	Links struct {
+		First string `json:"first"`
+		Next  string `json:"next"`
+		Last  string `json:"last"`
+	} `json:"links"`
+}
+
+// Episode is an episode for a given id
+type Episode struct {
+	ID    string `json:"id"`
+	Type  string `json:"type"`
+	Links struct {
+		Self string `json:"self"`
+	} `json:"links"`
+	Attributes struct {
+		CreatedAt time.Time `json:"createdAt"`
+		UpdatedAt time.Time `json:"updatedAt"`
+		Titles    struct {
+			EnJp string `json:"en_jp"`
+			EnUs string `json:"en_us"`
+			JaJp string `json:"ja_jp"`
+		} `json:"titles"`
+		CanonicalTitle string `json:"canonicalTitle"`
+		SeasonNumber   int    `json:"seasonNumber"`
+		Number         int    `json:"number"`
+		RelativeNumber int    `json:"relativeNumber"`
+		Synopsis       string `json:"synopsis"`
+		Airdate        string `json:"airdate"`
+		Length         int    `json:"length"`
+		Thumbnail      struct {
+			Original string `json:"original"`
+			Meta     struct {
+				Dimensions struct {
+				} `json:"dimensions"`
+			} `json:"meta"`
+		} `json:"thumbnail"`
+	} `json:"attributes"`
+	Relationships struct {
+		Media struct {
+			Links struct {
+				Self    string `json:"self"`
+				Related string `json:"related"`
+			} `json:"links"`
+		} `json:"media"`
+		Videos struct {
+			Links struct {
+				Self    string `json:"self"`
+				Related string `json:"related"`
+			} `json:"links"`
+		} `json:"videos"`
+	} `json:"relationships"`
 }
 
 // Link returns the full URL to the anime.

@@ -27,6 +27,14 @@ func TestGetAnimeCharactersForAnime(t *testing.T) {
 	assert.NotEmpty(t, response.Included)
 }
 
+func TestGetAnimeEpisodes(t *testing.T) {
+	eps, err := GetAnimeEpisodes("4676")
+
+	assert.NoError(t, err)
+	assert.NotNil(t, eps)
+	assert.Len(t, eps, 175)
+}
+
 func TestAnimePage(t *testing.T) {
 	page, err := GetAnimePage("anime?page[limit]=5&page[offset]=0")
 
